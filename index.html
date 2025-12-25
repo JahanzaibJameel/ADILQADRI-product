@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Royal Oud – AdilQadri (DOM)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Playfair Display", serif;
+        background: #0b0b0b;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      .royal-navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 72px;
+        padding: 0 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+      }
+
+      .royal-navbar a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin: 0 14px;
+      }
+
+      .nav-left,
+      .nav-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-left i {
+        font-size: 22px;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+
+      .nav-right i {
+        font-size: 17px;
+        margin-left: 18px;
+        cursor: pointer;
+      }
+
+      .nav-center {
+        font-size: 14px;
+        letter-spacing: 3px;
+        font-weight: 500;
+      }
+
+      .hero {
+        min-height: 100vh;
+        background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee")
+          center/cover no-repeat;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.55),
+          rgba(0, 0, 0, 0.25)
+        );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        padding: 0 70px;
+      }
+
+      .hero-left small {
+        font-size: 12px;
+        letter-spacing: 2px;
+        opacity: 0.85;
+      }
+
+      .hero-left .sub {
+        margin-left: 20px;
+      }
+
+      .hero-title {
+        font-size: 86px;
+        font-weight: 700;
+        line-height: 0.95;
+        margin: 24px 0;
+      }
+
+      .hero-left p {
+        font-size: 14px;
+        opacity: 0.85;
+      }
+
+      .hero-center {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      .hero-center img {
+        max-height: 460px;
+        filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.6));
+      }
+
+      .hero-right h5 {
+        font-style: italic;
+        font-size: 18px;
+        margin-bottom: 14px;
+      }
+
+      .hero-right p {
+        font-size: 13px;
+        line-height: 1.9;
+        opacity: 0.9;
+      }
+
+      .price-box {
+        margin-top: 26px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .price {
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      .qty {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 6px 14px;
+        border-radius: 6px;
+        width: 150px;
+      }
+
+      .qty button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 23px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      // NAVBAR
+      const nav = document.createElement("nav");
+      nav.className = "royal-navbar";
+
+      const navLeft = document.createElement("div");
+      navLeft.className = "nav-left";
+
+      const menuIcon = document.createElement("i");
+      menuIcon.className = "bi bi-list";
+
+      const home = document.createElement("a");
+      home.textContent = "HOME";
+      home.href = "#";
+
+      const products = document.createElement("a");
+      products.textContent = "PRODUCTS";
+      products.href = "#";
+
+      navLeft.append(menuIcon, home, products);
+
+      const navCenter = document.createElement("div");
+      navCenter.className = "nav-center";
+      navCenter.textContent = "ADILQADRI";
+
+      const navRight = document.createElement("div");
+      navRight.className = "nav-right";
+
+      ["ABOUT", "CONTACT"].forEach((text) => {
+        const a = document.createElement("a");
+        a.textContent = text;
+        a.href = "#";
+        navRight.appendChild(a);
+      });
+
+      ["cart3", "heart", "search"].forEach((icon) => {
+        const i = document.createElement("i");
+        i.className = `bi bi-${icon}`;
+        navRight.appendChild(i);
+      });
+
+      nav.append(navLeft, navCenter, navRight);
+      document.body.appendChild(nav);
+
+      // HERO
+      const hero = document.createElement("section");
+      hero.className = "hero";
+
+      const heroContent = document.createElement("div");
+      heroContent.className = "hero-content";
+
+      // LEFT
+      const heroLeft = document.createElement("div");
+      heroLeft.className = "hero-left";
+
+      heroLeft.innerHTML = `
+    <small>ADILQADRI <span class="sub">EAU DE PARFUM</span></small>
+    <h1 class="hero-title">ROYAL<br>OUD</h1>
+    <p>Royal Oudh Luxury Eau De Perfume Spray 100 ml</p>
+  `;
+
+      // CENTER
+      const heroCenter = document.createElement("div");
+      heroCenter.className = "hero-center";
+
+      const img = document.createElement("img");
+      img.src = "https://i.imgur.com/8Qf5ZQp.png";
+      img.alt = "Royal Oud Bottle";
+
+      heroCenter.appendChild(img);
+
+      // RIGHT
+      const heroRight = document.createElement("div");
+      heroRight.className = "hero-right";
+
+      heroRight.innerHTML = `
+    <h5>Royal Oudh Luxury</h5>
+    <p>
+      Adilqadri Presents A New Range Of Perfume Sprays And Is Happy
+      To Serve You This Kind Of Experience Through This Attempt.
+      A New Range Of Luxurious Looking Bottles Filled With Premium
+      Natural Perfume Spray Gives You A Royal Feeling.
+      The Enticing Fragrance Of This Perfume Spray Is Highly Long
+      Lasting Which Is A Vital Feature To Keep You On The Go.
+    </p>
+  `;
+
+      const priceBox = document.createElement("div");
+      priceBox.className = "price-box";
+
+      const price = document.createElement("div");
+      price.className = "price";
+      price.textContent = "₹1,199";
+
+      const qty = document.createElement("div");
+      qty.className = "qty";
+
+      const minus = document.createElement("button");
+      minus.textContent = "−";
+
+      const count = document.createElement("span");
+      count.textContent = "1";
+
+      const plus = document.createElement("button");
+      plus.textContent = "+";
+
+      qty.append(minus, count, plus);
+      priceBox.append(price, qty);
+      heroRight.appendChild(priceBox);
+
+      heroContent.append(heroLeft, heroCenter, heroRight);
+      hero.appendChild(heroContent);
+      document.body.appendChild(hero);
+    </script>
+  </body>
+</html>
